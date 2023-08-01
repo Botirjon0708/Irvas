@@ -1,7 +1,7 @@
 const images = () => {
     const imgPopup = document.createElement("div"),
         workSection = document.querySelector(".works"),
-        bidImage = document.createElement("img");
+        bigImage = document.createElement("img");
 
     imgPopup.classList.add('popup')
     workSection.appendChild(imgPopup);
@@ -10,7 +10,7 @@ const images = () => {
     justify-content: center;
     align-items: center;
  `
-    imgPopup.appendChild(bidImage);
+    imgPopup.appendChild(bigImage);
 
     workSection.addEventListener('click', (e) => {
         e.preventDefault();
@@ -20,12 +20,16 @@ const images = () => {
         if (target && target.classList.contains('preview')) {
             imgPopup.style.display = 'flex';
             const path = target.parentNode.getAttribute('href');
+           document.body.style.overflow = 'hidden'
 
-            bidImage.setAttribute('src', path);
+            bigImage.setAttribute('src', path);
+            bigImage.style.width = '70vw'
+            bigImage.style.height = '90vh'
         } 
 
         if (target && target.matches('div.popup')) {
-             imgPopup.style.display = "none";
+            imgPopup.style.display = "none";
+            document.body.style.overflow = "";
         }
     });
 
